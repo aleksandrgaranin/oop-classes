@@ -21,7 +21,12 @@ class ProductItem {
         this.product = product;
     }
 
-    render(){
+    addToCart() {
+        console.log('Adding product to cart...')
+        console.log(this.product)
+    }
+
+    render() {
         const prodEl = document.createElement('li');
         prodEl.className = 'product-item'
         prodEl.innerHTML = `
@@ -35,6 +40,8 @@ class ProductItem {
                 </div>
             </div>
         `;
+        const addCartButton = prodEl.querySelector("button");
+        addCartButton.addEventListener("click", this.addToCart.bind(this)); //othewise it will be 'udefined'
         return prodEl;
     }
 }
@@ -55,7 +62,7 @@ class ProductList {
 
     ];
 
-    constructor() {}
+    constructor() { }
 
     render() {
         const renderHook = document.getElementById('app');
