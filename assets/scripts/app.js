@@ -1,9 +1,9 @@
 
 class Product {
-    title = 'DEFAULT';
-    imageUrl;
-    description;
-    price;
+    // title = 'DEFAULT';
+    // imageUrl;
+    // description;
+    // price;
 
     constructor(title, imageUrl, description, price) {
         this.title = title;
@@ -15,19 +15,24 @@ class Product {
 
 // console.log(new Product())
 
-const productList = {
-    products: [
-        new Product('A pillow',
+class ProductList {
+    products = [
+        new Product(
+            'A pillow',
             'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs.yimg.com%2Faah%2Fyhst-72531153481428%2Fpillowtex-reg-luxury-down-and-feather-pillow-40.gif&f=1&nofb=1',
-            19.99,
-            'A super soft pillow'),        
-        {
-            title: 'A Carpet',
-            imageUrl: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjabrocarpetone.com%2Fwp-content%2Fuploads%2F2016%2F05%2FIMG_9206-800x533.jpg&f=1&nofb=1',
-            price: 89.99,
-            description: 'A super soft Carpet'
-        }
-    ],
+            'A super soft pillow',
+            19.99),
+        new Product(
+            'A Carpet',
+            'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjabrocarpetone.com%2Fwp-content%2Fuploads%2F2016%2F05%2FIMG_9206-800x533.jpg&f=1&nofb=1',
+            'A super soft Carpet',
+            89.99
+        )
+
+    ];
+
+    constructor() {}
+
     render() {
         const renderHook = document.getElementById('app');
         const prodList = document.createElement('ul');
@@ -50,6 +55,7 @@ const productList = {
         }
         renderHook.append(prodList)
     }
-};
+}
 
-productList.render()
+const productList = new ProductList();
+productList.render();
