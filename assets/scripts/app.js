@@ -52,8 +52,6 @@ class ShoppingCart extends Component{
     set cartItems(value) {
         this.items = value
         this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(2)}</h2>`;
-
-        console.log(this.items);
     }
 
     get totalAmount() {
@@ -64,7 +62,13 @@ class ShoppingCart extends Component{
     }
     
     constructor(renderHookId){
-        super(renderHookId);
+        // SECOND METHOD
+        super(renderHookId, false);
+        this.orderProducts = () => { 
+            console.log('Ordering ...');
+            console.log(this.items)
+        };
+        this.render();
     }
 
     addProduct(product) {
@@ -73,16 +77,24 @@ class ShoppingCart extends Component{
         this.cartItems = updatedItems;
     }
 
+    // FIRST METHOD
+    // orderProducts(){ 
+    //     console.log('Ordering ...');
+    //     console.log(this.items)
+    // }
+
     render() {
-        // const cartEl = document.createElement('section')
         const cartEl = this.createRootElement('section', 'cart')
         cartEl.innerHTML = `
             <h2>Total: \$${0}</h2>
             <button>Order Now!</button>
         `;
-        // cartEl.className = "cart";
+        const orderButton = cartEl.querySelector('button');
+        // FIRST METHOD
+        // orderButton.addEventListener("click", () => this.orderProducts()); // or this.orderProducts.bind(this)
+        // SECOND METHOD
+        orderButton.addEventListener("click", this.orderProducts )
         this.totalOutput = cartEl.querySelector('h2')
-        // return cartEl;
     }
 }
 
