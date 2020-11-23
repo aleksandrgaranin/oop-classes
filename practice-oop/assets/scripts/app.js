@@ -3,13 +3,20 @@ class Tooltip {
 }
 
 class ProjectItem {
-
+    constructor(id){
+        this.id = id
+    }
 }
 
 class ProjectList {
+    projects = []
     constructor(type){
-        const prhItems = document.querySelectorAll(`#${type}-projects li`);
-        console.log(prhItems)
+        const prjItems = document.querySelectorAll(`#${type}-projects li`);
+        // console.log(prhItems)
+        for (const prjItem of prjItems){
+            this.projects.push(new ProjectItem(prjItem.id))
+        }
+        console.log(this.projects);
     }
 }
 
