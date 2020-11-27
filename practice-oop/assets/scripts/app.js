@@ -14,23 +14,35 @@ class DOMHelper {
 }
 
 class Tooltip {
-
+    show() {
+        console.log('The Tooltip...')
+    }
 }
 
 class ProjectItem {
     constructor(id, updateProjectListFunction, type){
         this.id = id
         this.updateProjectListHandler = updateProjectListFunction
-        this.connectSwitchButton();
-        this.connectMoreInfoButton(type);
+        this.connectMoreInfoButton();
+        this.connectSwitchButton(type);
     }
-    connectMoreInfoButton() {}
+
+    showMoreInfoHandler() {
+        const tooltip = new Tooltip();
+        tooltip.show()
+    }
+
+    connectMoreInfoButton() {
+        const projectItemElement = document.getElementById(this.id);
+        const moreInfo = projectItemElement.querySelector('button:first-of-type');
+        moreInfo.addEventListener('click', this.showMoreInfoHandler)
+    }
 
     connectSwitchButton(type) {
         const projectItemElement = document.getElementById(this.id)
         let switchBtn = projectItemElement.querySelector('button:last-of-type')
         switchBtn = DOMHelper.clearEventListeners(switchBtn)
-        switchBtn.textContent = type === 'active' ? 'Finish' : 'Activate';
+        switchBtn.textContent = type === 'finished' ? 'Activate' : 'Finish';
         switchBtn.addEventListener('click', this.updateProjectListHandler.bind(null, this.id) )
     }
 
