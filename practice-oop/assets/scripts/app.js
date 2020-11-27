@@ -14,20 +14,34 @@ class DOMHelper {
 }
 
 class Componet {
+    constructor(hostElementId, insertBefore = false) {
+        if (hostElementId) {
+            this.hostElement = document.getElementById(hostElementId);
+        } else {
+            this.hostElement = document.body;
+        }
+        this.insertBefore = insertBefore
+    }
+
     detach() {
-        this.element.remove();
+        if (this.element){
+            this.element.remove();
+        }
         // this.element.parantElement.removeChild(this.element);// old way
     }
 
     attach() {        
-        document.body.append(this.element);
+        this.hostElement.insertAdjacentElement(
+            this.insertBefore ? 'afterbegin': 'beforeend', 
+            this.element
+        );
     }
 }
 
 class Tooltip extends Componet {
 
     constructor(closeNotifierFunction) {
-        super();
+        super('active-projects', true);
         this.closeNotifier = closeNotifierFunction;
         this.create()
     }
