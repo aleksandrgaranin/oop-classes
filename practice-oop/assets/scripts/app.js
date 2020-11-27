@@ -14,8 +14,20 @@ class DOMHelper {
 }
 
 class Tooltip {
-    show() {
-        console.log('The Tooltip...')
+    detach = () => {
+        this.element.remove();
+        // this.element.parantElement.removeChild(this.element);// old way
+    }
+
+    attach() {
+        // console.log('The Tooltip...')
+        const tooltipElement = document.createElement('div');
+        tooltipElement.className = 'card';
+        tooltipElement.textContent = 'Info';
+        tooltipElement.addEventListener('click', this.detach);
+        this.element = tooltipElement;
+        document.body.append(tooltipElement);
+
     }
 }
 
@@ -29,7 +41,7 @@ class ProjectItem {
 
     showMoreInfoHandler() {
         const tooltip = new Tooltip();
-        tooltip.show()
+        tooltip.attach()
     }
 
     connectMoreInfoButton() {
