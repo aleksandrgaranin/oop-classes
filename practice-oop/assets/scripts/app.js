@@ -168,7 +168,9 @@ class App {
         const timerId = setTimeout(this.startAnalytics, 3000)
 
         document.getElementById('stop-analitics-btn').addEventListener('click', () => {
-           clearTimeout(timerId) 
+           
+            console.log('Adalytics STOPED')
+            clearTimeout(timerId) 
         })
 
     }

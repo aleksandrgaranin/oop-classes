@@ -5,5 +5,6 @@ const intervalId = setInterval( () => {
 }, 2000);
 
 document.getElementById('stop-analitics-btn').addEventListener('click', () => {
+    console.log('Sending adalytics data STOPED')
     clearInterval(intervalId) 
 })
