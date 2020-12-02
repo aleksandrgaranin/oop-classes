@@ -164,7 +164,13 @@ class App {
         const finishedProjectsList = new ProjectList('finished');
         activeProjectList.setSwitchHandler(finishedProjectsList.addProject.bind(finishedProjectsList));
         finishedProjectsList.setSwitchHandler(activeProjectList.addProject.bind(activeProjectList));
-       document.getElementById('start-analitics-btn').addEventListener('click', this.startAnalytics)
+        document.getElementById('start-analitics-btn').addEventListener('click', this.startAnalytics)
+        const timerId = setTimeout(this.startAnalytics, 3000)
+
+        document.getElementById('stop-analitics-btn').addEventListener('click', () => {
+           clearTimeout(timerId) 
+        })
+
     }
 
     static startAnalytics() {
