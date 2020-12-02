@@ -10,6 +10,7 @@ class DOMHelper {
         // console.log(destinationElement)
         // console.log(element)
         destinationElement.append(element);
+        element.scrollIntoView({behavior: 'smooth'});
     }
 }
 
