@@ -40,3 +40,17 @@ button:active {
   height: 3000px;
   background-color: rgb(255, 159, 5);
 }
+
+li {
+  padding: 1rem;
+  border : 1px solid #ccc
+}
+
+ul {
+  list-style: none;
+}
+
+.highlight {
+  background-color: salmon;
+  color: white;
+}
