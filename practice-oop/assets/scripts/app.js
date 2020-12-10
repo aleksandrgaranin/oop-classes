@@ -1,4 +1,4 @@
-
+import {ProjectList} from './App/ProjectList.js'
 class App {
     static init() {
         const activeProjectList = new ProjectList('active');
@@ -6,7 +6,7 @@ class App {
         activeProjectList.setSwitchHandler(finishedProjectsList.addProject.bind(finishedProjectsList));
         finishedProjectsList.setSwitchHandler(activeProjectList.addProject.bind(activeProjectList));
         document.getElementById('start-analitics-btn').addEventListener('click', this.startAnalytics)
-        // const timerId = setTimeout(this.startAnalytics, 3000)
+        const timerId = setTimeout(this.startAnalytics, 3000)
 
         document.getElementById('stop-analitics-btn').addEventListener('click', () => {
            
@@ -18,7 +18,7 @@ class App {
 
     static startAnalytics() {
         const analiticsScript = document.createElement('script');
-        analiticsScript.src = 'assets/scripts/Analytics.js'
+        analiticsScript.src = 'assets/scripts/Utility/Analytics.js'
         analiticsScript.defer = 'true';
         document.head.append(analiticsScript);
     }

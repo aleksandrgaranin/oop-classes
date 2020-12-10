@@ -1,4 +1,7 @@
-class Tooltip extends Componet {
+import {Component} from './Component.js';
+
+
+export class Tooltip extends Component {
 
     constructor(closeNotifierFunction, text, hostElementId) {
         super(hostElementId);
@@ -35,7 +38,7 @@ class Tooltip extends Componet {
     closeTooltip = () => {
         this.detach();
         this.closeNotifier()
-    }
-    
-   
+    }   
 }
+
+
