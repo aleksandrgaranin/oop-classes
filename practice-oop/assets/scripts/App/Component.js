@@ -1,4 +1,4 @@
-export class Component {
+class Component {
     constructor(hostElementId, insertBefore = false) {
         if (hostElementId) {
             this.hostElement = document.getElementById(hostElementId);
@@ -22,3 +22,5 @@ export class Component {
         );
     }
 }
+
+export default Component
